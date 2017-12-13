@@ -1,5 +1,6 @@
 package oob.daggertryout.MainComponent.Framework.Activity;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -8,7 +9,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import oob.daggertryout.ApplicationComponent.BaseApplication;
-import oob.daggertryout.ApplicationComponent.EndpointInterface;
+import oob.daggertryout.ApplicationComponent.ClientEndpointInterface;
 import oob.daggertryout.ApplicationComponent.Model;
 import oob.daggertryout.R;
 import retrofit2.Call;
@@ -28,17 +29,19 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Retrofit retrofit = ((BaseApplication) getApplication()).retrofit;
-        EndpointInterface service = retrofit.create(EndpointInterface.class);
+        ClientEndpointInterface service = retrofit.create(ClientEndpointInterface.class);
         Call<Model> serviceCall = service.get();
         serviceCall.enqueue(new Callback<Model>() {
             @Override
-            public void onResponse(Call<Model> call, Response<Model> response) {
+            public void onResponse(@NonNull Call<Model> call, @NonNull Response<Model> response) {
                 Model model = response.body();
-                textViewHello.setText(String.format("El id es : %d", model.getId()));
+                if (model != null) {
+                    textViewHello.setText(String.valueOf(model.getId()));
+                }
             }
 
             @Override
-            public void onFailure(Call<Model> call, Throwable t) {
+            public void onFailure(@NonNull Call<Model> call, @NonNull Throwable t) {
                 Toast.makeText(MainActivity.this, "Fail!", Toast.LENGTH_SHORT).show();
             }
         });
