@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DaggerTryOut</string>
+    <string name="cache_name">CacheDaggerTryOut</string>
+    <string name="base_url">https://jsonplaceholder.typicode.com/posts/1/</string>
+</resources>
