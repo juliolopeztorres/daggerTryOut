@@ -28,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        Retrofit retrofit = ((BaseApplication) getApplication()).retrofit;
-        ClientEndpointInterface service = retrofit.create(ClientEndpointInterface.class);
+        ClientEndpointInterface service = ((BaseApplication) getApplication()).clientEndpoint;
         Call<Model> serviceCall = service.get();
         serviceCall.enqueue(new Callback<Model>() {
             @Override

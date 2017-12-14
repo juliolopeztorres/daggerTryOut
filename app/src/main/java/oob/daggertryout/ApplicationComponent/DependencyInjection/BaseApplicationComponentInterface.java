@@ -1,9 +1,9 @@
 package oob.daggertryout.ApplicationComponent.DependencyInjection;
 
 import dagger.Component;
-import okhttp3.OkHttpClient;
+import oob.daggertryout.ApplicationComponent.ClientEndpointInterface;
 
 @Component(modules = ClientModule.class)
 public interface BaseApplicationComponentInterface {
-    OkHttpClient getClient();
+    ClientEndpointInterface getClientEndpoint();
 }
