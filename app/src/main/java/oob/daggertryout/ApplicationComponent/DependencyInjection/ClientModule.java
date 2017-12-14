@@ -36,10 +36,4 @@ public class ClientModule {
                 .client(client)
                 .build();
     }
-
-    @Provides
-    @BaseApplicationScopeInterface
-    ClientEndpointInterface provideClientEndpoint(Retrofit retrofit) {
-        return retrofit.create(ClientEndpointInterface.class);
-    }
 }

@@ -9,11 +9,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import oob.daggertryout.ApplicationComponent.BaseApplication;
 import oob.daggertryout.MainComponent.Data.ClientEndpointInterface;
-import oob.daggertryout.MainComponent.Data.PostRepository;
 import oob.daggertryout.MainComponent.Domain.GetPostUseCase;
 import oob.daggertryout.MainComponent.Domain.ViewInterface;
 import oob.daggertryout.MainComponent.Framework.DependencyInyection.DaggerMainActivityComponentInterface;
 import oob.daggertryout.MainComponent.Framework.DependencyInyection.MainActivityComponentInterface;
+import oob.daggertryout.MainComponent.Framework.DependencyInyection.MainActivityModule;
 import oob.daggertryout.R;
 
 public class MainActivity extends AppCompatActivity implements ViewInterface {
@@ -21,10 +21,8 @@ public class MainActivity extends AppCompatActivity implements ViewInterface {
     @BindView(R.id.textViewHello)
     TextView textViewHello;
 
-    private GetPostUseCase getPostUseCase;
-
     @Inject
-    ClientEndpointInterface service;
+    GetPostUseCase getPostUseCase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +33,9 @@ public class MainActivity extends AppCompatActivity implements ViewInterface {
         // ------------ DAGGER - DI -------------- //;
         MainActivityComponentInterface component = DaggerMainActivityComponentInterface.builder()
                 .baseApplicationComponentInterface(((BaseApplication) this.getApplication()).getComponent())
+                .mainActivityModule(new MainActivityModule(this))
                 .build();
         component.inject(this);
-
-        this.getPostUseCase = new GetPostUseCase(
-                this,
-                new PostRepository(this.service));
     }
 
     @Override

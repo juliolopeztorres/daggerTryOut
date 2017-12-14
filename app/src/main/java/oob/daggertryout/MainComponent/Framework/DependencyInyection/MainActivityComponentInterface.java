@@ -6,7 +6,7 @@ import oob.daggertryout.ApplicationComponent.DependencyInjection.BaseApplication
 import oob.daggertryout.MainComponent.Framework.MainActivity;
 
 @MainActivityScopeInterface
-@Component(dependencies = BaseApplicationComponentInterface.class)
+@Component(modules = MainActivityModule.class, dependencies = BaseApplicationComponentInterface.class)
 public interface MainActivityComponentInterface {
     void inject(MainActivity mainActivity);
 }
