@@ -11,6 +11,7 @@ import timber.log.Timber;
 public class LogModule {
 
     @Provides
+    @BaseApplicationScopeInterface
     HttpLoggingInterceptor provideHttpLoggingInterceptor() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override

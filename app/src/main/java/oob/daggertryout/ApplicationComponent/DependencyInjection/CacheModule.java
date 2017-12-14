@@ -20,11 +20,13 @@ public class CacheModule {
     }
 
     @Provides
+    @BaseApplicationScopeInterface
     File provideFile() {
         return new File(cacheDir, cacheName);
     }
 
     @Provides
+    @BaseApplicationScopeInterface
     Cache provideCache(File cacheFile) {
         return new Cache(cacheFile, cacheSize);
     }

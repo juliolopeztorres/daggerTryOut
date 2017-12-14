@@ -10,18 +10,15 @@ import oob.daggertryout.R;
 import timber.log.Timber;
 
 public class BaseApplication extends Application {
-
-    public ClientEndpointInterface clientEndpoint;
+    BaseApplicationComponentInterface component;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         Timber.plant(new Timber.DebugTree());
-
-        // ------------ DAGGER - DI -------------- //
-        BaseApplicationComponentInterface component;
-        component = DaggerBaseApplicationComponentInterface.builder()
+        // ------------ DAGGER - DI -------------- //;
+        this.component = DaggerBaseApplicationComponentInterface.builder()
                 .cacheModule(
                         new CacheModule(
                                 getCacheDir(),
@@ -31,7 +28,9 @@ public class BaseApplication extends Application {
                 )
                 .clientModule(new ClientModule(getString(R.string.base_url)))
                 .build();
+    }
 
-        this.clientEndpoint = component.getClientEndpoint();
+    public BaseApplicationComponentInterface getComponent() {
+        return component;
     }
 }

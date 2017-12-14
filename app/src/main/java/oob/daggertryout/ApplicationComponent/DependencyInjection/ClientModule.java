@@ -19,6 +19,7 @@ public class ClientModule {
     }
 
     @Provides
+    @BaseApplicationScopeInterface
     OkHttpClient provideOkHttpClient(HttpLoggingInterceptor httpLoggingInterceptor, Cache cache) {
         return new OkHttpClient.Builder()
                 .addInterceptor(httpLoggingInterceptor)
@@ -27,6 +28,7 @@ public class ClientModule {
     }
 
     @Provides
+    @BaseApplicationScopeInterface
     Retrofit provideRetrofit(OkHttpClient client) {
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
@@ -36,6 +38,7 @@ public class ClientModule {
     }
 
     @Provides
+    @BaseApplicationScopeInterface
     ClientEndpointInterface provideClientEndpoint(Retrofit retrofit) {
         return retrofit.create(ClientEndpointInterface.class);
     }
