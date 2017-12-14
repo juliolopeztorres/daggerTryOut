@@ -1,7 +1,7 @@
-package oob.daggertryout.ApplicationComponent;
+package oob.daggertryout.MainComponent.Data;
 
 
-import oob.daggertryout.MainComponent.Model;
+import oob.daggertryout.MainComponent.Domain.Model;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

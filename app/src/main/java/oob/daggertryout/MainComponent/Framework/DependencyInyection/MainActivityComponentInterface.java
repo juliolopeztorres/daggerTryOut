@@ -1,9 +1,9 @@
-package oob.daggertryout.MainComponent.DependencyInyection;
+package oob.daggertryout.MainComponent.Framework.DependencyInyection;
 
 
 import dagger.Component;
 import oob.daggertryout.ApplicationComponent.DependencyInjection.BaseApplicationComponentInterface;
-import oob.daggertryout.MainComponent.MainActivity;
+import oob.daggertryout.MainComponent.Framework.MainActivity;
 
 @MainActivityScopeInterface
 @Component(dependencies = BaseApplicationComponentInterface.class)
