@@ -1,10 +1,10 @@
 package oob.daggertryout.ApplicationComponent.DependencyInjection;
 
 import dagger.Component;
-import oob.daggertryout.ApplicationComponent.ClientEndpointInterface;
+import retrofit2.Retrofit;
 
 @BaseApplicationScopeInterface
 @Component(modules = ClientModule.class)
 public interface BaseApplicationComponentInterface {
-    ClientEndpointInterface getClientEndpoint();
+    Retrofit getRetrofit();
 }

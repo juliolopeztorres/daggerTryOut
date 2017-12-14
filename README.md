@@ -15,7 +15,7 @@ by Http client model response with mocked data from Typicode.
 
 # Usage
 
-Copy it and build with Android Studio. 
+Copy it, let Dagger 2 make its magic and build it with Android Studio. 
 
 Enjoy!
 

@@ -1,4 +1,4 @@
-package oob.daggertryout.MainComponent;
+package oob.daggertryout.MainComponent.Domain;
 
 public class Model {
     private int id;

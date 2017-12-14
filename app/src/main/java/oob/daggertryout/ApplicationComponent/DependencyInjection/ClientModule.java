@@ -5,7 +5,7 @@ import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import oob.daggertryout.ApplicationComponent.ClientEndpointInterface;
+import oob.daggertryout.MainComponent.Data.ClientEndpointInterface;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -35,11 +35,5 @@ public class ClientModule {
                 .baseUrl(this.baseUrl)
                 .client(client)
                 .build();
-    }
-
-    @Provides
-    @BaseApplicationScopeInterface
-    ClientEndpointInterface provideClientEndpoint(Retrofit retrofit) {
-        return retrofit.create(ClientEndpointInterface.class);
     }
 }
